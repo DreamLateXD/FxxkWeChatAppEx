@@ -6,12 +6,6 @@ $BarWidth = 37
 
 $Host.UI.RawUI.WindowTitle = $Title
 
-function Set-WindowSize {
-	param([int]$Width, [int]$Height)
-	try {
-		$Host.UI.RawUI.WindowSize = New-Object System.Management.Automation.Host.Size($Width, $Height)
-	} catch {}
-}
 
 function Write-ProgressBar {
 	param([int]$Percent)
@@ -26,7 +20,6 @@ function Wait-Confirm {
 
 function Show-Menu {
 	Clear-Host
-	Set-WindowSize 42 13
 	Write-Host ' ' $Title
 	Write-Host '========================================='
 	Write-Host '      理论上该脚本不需要管理员权限'
@@ -42,7 +35,6 @@ function Show-Menu {
 
 function Stop-WeChat {
 	Clear-Host
-	Set-WindowSize 42 3
 	$proc = Get-Process -Name Weixin -ErrorAction SilentlyContinue
 	if (-not $proc) {
 		Write-Host '微信未在运行'
@@ -62,7 +54,6 @@ function Stop-WeChat {
 
 function Invoke-Fxxk {
 	Clear-Host
-	Set-WindowSize 45 3
 	try {
 		if (Test-Path -LiteralPath $PluginPath) {
 			Remove-Item -LiteralPath $PluginPath -Recurse -Force -ErrorAction Stop
@@ -102,7 +93,6 @@ function Invoke-Fxxk {
 
 function Invoke-Recovery {
 	Clear-Host
-	Set-WindowSize 45 4
 	try {
 		if (Test-Path -LiteralPath $PluginPath) {
 			(Get-Item -LiteralPath $PluginPath -Force).IsReadOnly = $false
