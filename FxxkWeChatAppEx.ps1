@@ -1,14 +1,16 @@
 ﻿$OutputEncoding = [Console]::OutputEncoding = [Text.Encoding]::UTF8
 
+$Title = 'FxxkWeChatAppEx 2.0 | by LateDreamXD'
 $PluginPath = Join-Path $env:APPDATA 'Tencent\xwechat\XPlugin\Plugins\RadiumWMPF'
 $BarWidth = 37
+
+$Host.UI.RawUI.WindowTitle = $Title
 
 function Set-WindowSize {
 	param([int]$Width, [int]$Height)
 	try {
 		$Host.UI.RawUI.WindowSize = New-Object System.Management.Automation.Host.Size($Width, $Height)
-	} catch {
-	}
+	} catch {}
 }
 
 function Write-ProgressBar {
@@ -25,7 +27,7 @@ function Wait-Confirm {
 function Show-Menu {
 	Clear-Host
 	Set-WindowSize 42 13
-	Write-Host '    FxxkWeChatAppEx v1.0 by LateDream'
+	Write-Host ' ' $Title
 	Write-Host '========================================='
 	Write-Host '      理论上该脚本不需要管理员权限'
 	Write-Host ''
@@ -115,17 +117,23 @@ function Invoke-Recovery {
 	Wait-Confirm
 }
 
-while ($true) {
-	Show-Menu
-	$option = Read-Host '>'
-	switch ($option) {
-		'q' { return }
-		'k' { Stop-WeChat }
-		'f' { Invoke-Fxxk }
-		'r' { Invoke-Recovery }
-		default {
-			Write-Host '无效的选项'
-			Wait-Confirm
+if ($IsLinux -or $IsMacOS) {
+	Write-Host ''
+	Write-Host '暂不支持当前系统。'
+} else {
+	while ($true) {
+		Show-Menu
+		$option = Read-Host '>'
+		switch ($option) {
+			'q' { return }
+			'k' { Stop-WeChat }
+			'f' { Invoke-Fxxk }
+			'r' { Invoke-Recovery }
+			default {
+				Clear-Host
+				Write-Host '无效的选项'
+				Wait-Confirm
+			}
 		}
 	}
 }
