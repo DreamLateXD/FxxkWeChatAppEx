@@ -4,7 +4,7 @@ $Title = 'FxxkWeChatAppEx 2.0 | by LateDreamXD'
 $PluginPath = Join-Path $env:APPDATA 'Tencent\xwechat\XPlugin\Plugins\RadiumWMPF'
 $BarWidth = 37
 
-$Host.UI.RawUI.WindowTitle = $Title
+# $Host.UI.RawUI.WindowTitle = $Title
 
 
 function Write-ProgressBar {
