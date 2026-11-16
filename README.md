@@ -1,6 +1,11 @@
 ### FxxkWeChatAppEx
 **一键告别 WeChatAppEX**
 
+> [!IMPORTANT]
+> 某信从新版本（具体版本未知，可能为 3.9 ~ 4.0）开始  
+> 部分功能（目前已知[公众号相关功能](https://github.com/DreamLateXD/FxxkWeChatAppEx/issues/2)受影响）已完全依赖 WeChatAppEx  
+> 若你需要使用这些功能则不要移除该组件  
+
 支持命令提示符（旧版），PowerShell 5.1/7+
 
 ### ⚡ 快速开始
